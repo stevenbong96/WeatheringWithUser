@@ -30,9 +30,10 @@
         <div class="row">
             <!-- First column -->
             <div class="col-md-4">
-                <form class="form-inline">
-                    <input id="cityname zipcode" class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="form-inline" id="weatherlist">
+                    <input id="textarea" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <!-- Button to add cities -->
+                    <button id="addcity" class="btn btn-primary" type="submit">Add</button>
                 </form>
 
                 <!-- Make a list of city -->
@@ -44,15 +45,18 @@
 
             <!-- Second Column -->
             <div class="col-md-8">
-                <!-- First Subrow -->
-                <div class="row showdescription">
-                    <ul>
-                        <h2>Atlanta</h2>
-                        <h4>Temperature</h4>
-                        <h4>Humidity</h4>
-                        <h4>Wind Speed</h4>
-                        <h4>UV Index</h4>
-                    </ul>
+                <div id="listresponse" class="listresponse card">
+                    <div class="card-body">
+                        <div id="citysymbol">
+                            <h2 id="cityname">Name</h2>
+                        </div>
+                        
+                        <!-- List of responses -->
+                        <h4 id="citytemp" class="card-text">A</h4>
+                        <h4 id="cityhumidity" class="card-text">B</h4>
+                        <h4 id="citywind" class="card-text">C</h4>
+                        <h4 id="cityuv" class="card-text">D</h4>
+                    </div>
                 </div>
 
                 <!-- Make space between -->
@@ -61,18 +65,59 @@
 
                 <!-- Second subrow -->
                 <div class="row">
-                    <h2>5-Day Forecast</h2>
-                </div>
+                    <div id="weatherforecast" class="col-md-8">
+                        <h2>5-Day Forecast</h2>
+                        <div id="5dayforecast">
+                            <!-- First day forecast -->
+                            <div class="card">
+                                <div id="firstforecast"class="card-body">
+                                  <p id="firstdate" class="card-title">A</p>
+                                  <p id="forecastfirsttemp" class="card-text">B</p>
+                                  <p id="forecastfirsthumidity" class="card-text">C</p>
+                                </div>
+                            </div>
 
-                <!-- Third subrow -->
-                <div class="col-md-2">
-                    <div class="card">
-                        <div class="card-body">
-                          This is some text within a card body.
+                            <!-- Second day forecast -->
+                            <div class="card">
+                                <div id="secondforecast"class="card-body">
+                                  <p id="seconddate" class="card-title">A</p>
+                                  <p id="forecastsecondtemp" class="card-text">B</p>
+                                  <p id="forecastsecondhumidity" class="card-text">C</p>
+                                </div>
+                            </div>
+
+                            <!-- Third day forecast -->
+                            <div class="card">
+                                <div id="thirdforecast"class="card-body">
+                                  <p id="thirddate" class="card-title">A</p>
+                                  <p id="forecastthirdtemp" class="card-text">B</p>
+                                  <p id="forecastthirdhumidity" class="card-text">C</p>
+                                </div>
+                            </div>
+
+                            <!-- Fourth day forecast -->
+                            <div class="card">
+                                <div id="fourthforecast"class="card-body">
+                                  <p id="fourthdate" class="card-title">A</p>
+                                  <p id="forecastfourthtemp" class="card-text">B</p>
+                                  <p id="forecastfourthhumidity" class="card-text">C</p>
+                                </div>
+                            </div>
+
+                            <!-- Fifth day forecast -->
+                            <div class="card">
+                                <div id="fifthforecast"class="card-body">
+                                  <p id="fifthdate" class="card-title">A</p>
+                                  <p id="forecastfifthtemp" class="card-text">B</p>
+                                  <p id="forecastfifthhumidity" class="card-text">C</p>
+                                </div>
+                            </div>
                         </div>
-                      </div>
+                    </div>
+
+                    
+
                 </div>
-                
             </div>
         </div>
     </div>
