@@ -16,28 +16,27 @@
     <!-- Make the header -->
     <header>
         <div class="head">
-            <h1>Weather Dashboard and Forecast</h1>
+            <h1>Weather and Forecast Dashboard</h1>
         </div>
     </header>
 
     <!-- Make space -->
     <br>
-    <hr>
     <br>
 
     <!-- Make the search bar using bootstrap -->
-    <div class="container">
+    <div class="container-fluid no-gutters">
         <div class="row">
             <!-- First column -->
             <div class="col-md-4">
                 <form class="form-inline" id="weatherlist">
-                    <input id="textarea" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <input id="citytext" class="form-control" type="search" placeholder="Search" aria-label="Search">
                     <!-- Button to add cities -->
                     <button id="addcity" class="btn btn-primary" type="submit">Add</button>
                 </form>
 
                 <!-- Make a list of city -->
-                <ul id="citylist">
+                <ul id="listcity">
 
                 </ul>
 
@@ -47,15 +46,17 @@
             <div class="col-md-8">
                 <div id="listresponse" class="listresponse card">
                     <div class="card-body">
-                        <div id="citysymbol">
-                            <h2 id="cityname">Name</h2>
+                        <div id="cityweather">
+                            <span id="cityname"></span>
+                            <span id="currenttime"></span>
+                            <span id="weathericon"></span>
                         </div>
                         
                         <!-- List of responses -->
-                        <h4 id="citytemp" class="card-text">A</h4>
-                        <h4 id="cityhumidity" class="card-text">B</h4>
-                        <h4 id="citywind" class="card-text">C</h4>
-                        <h4 id="cityuv" class="card-text">D</h4>
+                        <h4 id="citytemp" class="card-text"></h4>
+                        <h4 id="cityhumidity" class="card-text"></h4>
+                        <h4 id="citywind" class="card-text"></h4>
+                        <h4 id="cityuv" class="card-text"></h4>
                     </div>
                 </div>
 
@@ -130,6 +131,9 @@
     <!-- Link to jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Link to Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <!-- Link to JS file -->
     <script src="script.js"></script>
