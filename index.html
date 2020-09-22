@@ -28,7 +28,8 @@
     <div class="container-fluid no-gutters">
         <div class="row">
             <!-- First column -->
-            <div class="col-md-4">
+            <div class="col-md-4 gray">
+                <h3>Search for a City:</h3>
                 <form class="form-inline" id="weatherlist">
                     <input id="citytext" class="form-control" type="search" placeholder="Search" aria-label="Search">
                     <!-- Button to add cities -->
@@ -36,7 +37,7 @@
                 </form>
 
                 <!-- Make a list of city -->
-                <ul id="listcity">
+                <ul id="listcity" class="listcity">
 
                 </ul>
 
@@ -49,7 +50,7 @@
                         <div id="cityweather">
                             <h2 id="cityname"></h2>
                             <h4 id="currenttime"></h4>
-                            <span id="weathericon"></span>
+                            <img id="weathericon">
                         </div>
                         
                         <!-- List of responses -->
@@ -69,112 +70,65 @@
                     <div id="weatherforecast" class="col-md-8">
                         <h2>5-Day Forecast</h2>
                         <div id="5dayforecast">
-                            <!-- First day forecast
-                            <div class="card">
-                                <div id="firstforecast"class="card-body">
-                                  <p id="name-0" class="card-title">A</p>
-                                  <p id="forecastfirsttemp" class="card-text">B</p>
-                                  <p id="forecastfirsthumidity" class="card-text">C</p>
-                                </div>
-                            </div>
+                            <div class="card-deck">
 
-                            Second day forecast
-                            <div class="card">
-                                <div id="secondforecast"class="card-body">
-                                  <p id="name-8" class="card-title">A</p>
-                                  <p id="forecastsecondtemp" class="card-text">B</p>
-                                  <p id="forecastsecondhumidity" class="card-text">C</p>
-                                </div>
-                            </div>
-
-                            Third day forecast
-                            <div class="card">
-                                <div id="thirdforecast"class="card-body">
-                                  <p id="name-16" class="card-title">A</p>
-                                  <p id="forecastthirdtemp" class="card-text">B</p>
-                                  <p id="forecastthirdhumidity" class="card-text">C</p>
-                                </div>
-                            </div>
-
-                            Fourth day forecast
-                            <div class="card">
-                                <div id="fourthforecast"class="card-body">
-                                  <p id="name-24" class="card-title">A</p>
-                                  <p id="forecastfourthtemp" class="card-text">B</p>
-                                  <p id="forecastfourthhumidity" class="card-text">C</p>
-                                </div>
-                            </div>
-
-                            Fifth day forecast
-                            <div class="card">
-                                <div id="fifthforecast"class="card-body">
-                                  <p id="name-32" class="card-title">A</p>
-                                  <p id="forecastfifthtemp" class="card-text">B</p>
-                                  <p id="forecastfifthhumidity" class="card-text">C</p>
-                                </div>
-                            </div> -->
-
-                            <div class="row row-cols-1 row-cols-md-5">
-                                <!-- First day forecast -->
-                                <div class="col mb-4">
-                                  <div class="card">
-                                    <div class="card-body">
-                                      <h2 id="name-0" class="card-title">City</h2>
-                                      <h4 id="temp-0" class="card-title">Temp</h4>
-                                      <h4 id="humid-0" class="card-title">Humidity</h4>
+                                <!-- First Forecast -->
+                                <div class="card">
+                                    <div class="card-body blue">
+                                      <h4 id="name-0" class="card-title"></h4>
+                                      <h4 id="date-0" class="card-title"></h4>
+                                      <img id="icon-0">
+                                      <h6 id="temp-0" class="card-title"></h6>
+                                      <h6 id="humid-0" class="card-title"></h6>
                                     </div>
-                                  </div>
                                 </div>
 
-                                 <!-- Second day forecast -->
-                                <div class="col mb-4">
-                                  <div class="card">
-                                    <div class="card-body">
-                                        <h2 id="name-8" class="card-title">City</h2>
-                                        <h4 id="temp-8" class="card-title">Temp</h4>
-                                        <h4 id="humid-8" class="card-title">Humidity</h4>
+                                <!-- Second Forecast -->
+                                <div class="card">
+                                    <div class="card-body blue">
+                                        <h4 id="name-8" class="card-title"></h4>
+                                        <h4 id="date-8" class="card-title"></h4>
+                                        <img id="icon-8">
+                                        <h6 id="temp-8" class="card-title"></h6>
+                                        <h6 id="humid-8" class="card-title"></h6>
                                     </div>
-                                  </div>
                                 </div>
 
-                                 <!-- Third day forecast -->
-                                <div class="col mb-4">
-                                  <div class="card">
-                                    <div class="card-body">
-                                        <h2 id="name-16" class="card-title">City</h2>
-                                        <h4 id="temp-16" class="card-title">Temp</h4>
-                                        <h4 id="humid-16" class="card-title">Humidity</h4>
+                                <!-- Third Forecast -->
+                                <div class="card">
+                                    <div class="card-body blue">
+                                        <h4 id="name-16" class="card-title"></h4>
+                                        <h4 id="date-16" class="card-title"></h4>
+                                        <img id="icon-16">
+                                        <h6 id="temp-16" class="card-title"></h6>
+                                        <h6 id="humid-16" class="card-title"></h6>
                                     </div>
-                                  </div>
                                 </div>
 
-                                 <!-- Fourth day forecast -->
-                                <div class="col mb-4">
-                                  <div class="card">
-                                    <div class="card-body">
-                                        <h2 id="name-24" class="card-title">City</h2>
-                                        <h4 id="temp-24" class="card-title">Temp</h4>
-                                        <h4 id="humid-24" class="card-title">Humidity</h4>
+                                <!-- Fourth Forecast -->
+                                <div class="card">
+                                    <div class="card-body blue">
+                                        <h4 id="name-24" class="card-title"></h4>
+                                        <h4 id="date-24" class="card-title"></h4>
+                                        <img id="icon-24">
+                                        <h6 id="temp-24" class="card-title"></h6>
+                                        <h6 id="humid-24" class="card-title"></h6>
                                     </div>
-                                  </div>
                                 </div>
 
-                                 <!-- Fifth day forecast -->
-                                <div class="col mb-4">
-                                    <div class="card">
-                                      <div class="card-body">
-                                        <h2 id="name-32" class="card-title">City</h2>
-                                        <h4 id="temp-32" class="card-title">Temp</h4>
-                                        <h4 id="humid-32" class="card-title">Humidity</h4>
-                                      </div>
+                                <!-- Fifth Forecast -->
+                                <div class="card">
+                                    <div class="card-body blue">
+                                        <h4 id="name-32" class="card-title"></h4>
+                                        <h4 id="date-32" class="card-title"></h4>
+                                        <img id="icon-32">
+                                        <h6 id="temp-32" class="card-title"></h6>
+                                        <h6 id="humid-32" class="card-title"></h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    
-
                 </div>
             </div>
         </div>

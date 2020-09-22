@@ -1,21 +1,19 @@
 // Declare global variables
-// var cities = ["Seattle", "San Francsico", "Portland", "Los Angeles"];
 var cityName = [];
-// var addCity = $("#addcity");
 let cityInput = $("#citytext");
 
 // Declare the API Key
 var APIKey = "9225ddf71ee9bfd143d39d7740347c51";
 
-// showListOfCity(cityName);
-
 // Create list of city
 function showListOfCity(createList){
-    $("#listcity").empty();
-
+    var listCity = $("#listcity")
+    listCity.empty();
+    
     // Create for loop
     for(i = 0; i < createList.length;i++){
         var cityButton = $("<button>");
+        cityButton.addClass("list-group-item list-group-item-action btn-block");
         cityButton.text(createList[i]);
         $("#listcity").append(cityButton);
         
@@ -27,15 +25,15 @@ function displayWeather(cities){
     // Declare the weather queryURL
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cities + "&appid=" + APIKey;
 
-    // Declare the queryURL
+    // Declare the forecast queryURL
     var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cities + "&appid=" + APIKey;
 
     // Call the ajax 
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response){
-        console.log(response);
+    }).then(function(responseWeather){
+        console.log(responseWeather);
         
         // Create the city name display
         var displayCity = $("#cityname");
@@ -46,27 +44,39 @@ function displayWeather(cities){
         currentDate.text(moment().format('L'));
 
         // Display the weather icon
-        // var displayIcon = $("#weathericon");
-        // displayIcon.text(response.weather);
+        var displayIcon = $("#weathericon");
+        displayIcon.attr("src","https://openweathermap.org/img/w/" + responseWeather.weather[0].icon + ".png");
 
         // Create temperature display
         var displayTemp = $("#citytemp");
-        var tempFahr = ((response.main.temp) - 273.15) * 1.80 + 32;
+        var tempFahr = ((responseWeather.main.temp) - 273.15) * 1.80 + 32;
         displayTemp.text("Temperature: " + tempFahr.toFixed(0) + " F");
 
         // Create humidity display
         var displayHumidity = $("#cityhumidity");
-        displayHumidity.text("Humidity: " + response.main.humidity + " %");
+        displayHumidity.text("Humidity: " + responseWeather.main.humidity + " %");
 
         // Create wind speed display
         var displayWind = $("#citywind");
-        displayWind.text("Wind Speed: " + response.wind.speed + " MPH");
+        displayWind.text("Wind Speed: " + responseWeather.wind.speed + " MPH");
+        
+        // Create variable to call the lat and lon to get the UV Index
+        var latitude = responseWeather.coord.lat;
+        var longitude = responseWeather.coord.lon;
+        
+        // Declare the UV Index queryURL
+        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
 
-        // Create UV Index display
-        // var displayUV = $("<h4>");
-        // displayUV.text();
-        // displayUV.addClass();
-        // $("#cityuv").append(displayUV);
+        // Create AJAX for UV Index
+        $.ajax({
+            url: uvURL,
+            method: "GET"
+        }).then(function(responseUV){
+            console.log(responseUV);
+            // Create UV Index display
+            var displayUV = $("#cityuv");
+            displayUV.text("UV Index: " + responseUV.value);
+        })
     })
 
     // Call the AJAX for forecast
@@ -82,6 +92,14 @@ function displayWeather(cities){
             var forecastText = $("#name-" + j);
             forecastText.text(responseForecast.city.name);
 
+            // Create forecast date
+            var forecastDate = $("#date-" + j);
+            forecastDate.text(responseForecast.list[j].dt_txt);
+
+            // Create forecast icon
+            var forecastIcon = $("#icon-" + j);
+            forecastIcon.attr("src", "https://openweathermap.org/img/w/" + responseForecast.list[j].weather[0].icon + ".png");
+
             // Display city temperature
             var forecastTemp = $("#temp-" + j);
             var forecastFahr = ((responseForecast.list[j].main.temp) - 273.15) * 1.80 + 32;
@@ -90,31 +108,9 @@ function displayWeather(cities){
             // Display Forecast Humidity
             var forecastHumid = $("#humid-" + j);
             forecastHumid.text("Humidity: " + responseForecast.list[j].main.humidity + " %");
-
         }
     })
-
-    // Create AJAX for UV Index
-    // $.ajax({
-    //     url: uvURL,
-    //     method: "GET"
-    // }).then(function(responseUV){
-    //     console.log(responseUV);
-    // })
-
 }
-
-// Create function to display the weather data for each city
-// function reloadDisplayCity(){
-//     // Looping through an array of cities
-//     for(i = 0; i < cityName.length; i++){
-//         var reDisplay = $("<button>");
-//         reDisplay.addClass();
-//         reDisplay.attr("",cities[i]);
-//         reDisplay.text(cities[i]);
-//         $("#citylist").append(reDisplay);
-//     }
-// }
 
 // local storage function
 function saveToLocal(key, value){
