@@ -16,8 +16,10 @@ function showListOfCity(createList){
         cityButton.addClass("list-group-item list-group-item-action btn-block");
         cityButton.text(createList[i]);
         $("#listcity").append(cityButton);
-        
     }
+
+    // Get value local storage
+    
 }
 
 // Create function to call the ajax function to run the API
@@ -37,11 +39,11 @@ function displayWeather(cities){
         
         // Create the city name display
         var displayCity = $("#cityname");
-        displayCity.text(cities);
+        displayCity.text(cities + " ");
 
         // Display current time
         var currentDate = $("#currenttime");
-        currentDate.text(moment().format('L'));
+        currentDate.text("(" + moment().format('L') + ")");
 
         // Display the weather icon
         var displayIcon = $("#weathericon");
@@ -88,6 +90,10 @@ function displayWeather(cities){
         // Create a for loop
         for(j = 0; j < responseForecast.list.length; j+=8){
 
+            // Add background color when user input the cities
+            var card = $("#backgroundblue-" + j);
+            card.addClass("blue");
+
             // Display city name
             var forecastText = $("#name-" + j);
             forecastText.text(responseForecast.city.name);
@@ -126,11 +132,6 @@ $(document).on("click", "button", function(event){
     var inputCity = cityInput.val().trim();
     console.log(inputCity);
 
-    // Create if/else conditional statement 
-    // if(inputCity === " "){
-    //     return
-    // }
-
     // Adding movies to the list
     for(z = 0; z < cityName.length; z++){
         if(cityName[z] === inputCity){
@@ -148,6 +149,22 @@ $(document).on("click", "button", function(event){
 
     // Call the 
     // reloadDisplayCity();
+})
+
+// Make the list clickable
+$("#listcity").on("click", "button", function(event){
+    // To prevent refresh
+    event.preventDefault();
+
+    // List city
+    var getCity = $(this).text();
+
+    // Call the function
+    displayWeather(getCity);
+
+    // Determine which one to show
+    $("#listreponse").show();
+    $("#weatherforecast").show();
 })
 
 // Call the 
