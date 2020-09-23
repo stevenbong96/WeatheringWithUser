@@ -153,35 +153,6 @@ $(document).on("click", "button", function(event){
     // reloadDisplayCity();
 })
 
-// Copy of function above
-// $(document).ready(function(){
-//     var getCity = localStorage.getItem("createList");
-//     var searchList = JSON.parse(getCity);
-
-//     if(searchList == null){
-//         searchList = {};
-//     }
-
-//     showListOfCity(searchList);
-
-//     $("#listreponse").hide();
-//     $("#weatherforecast").hide();
-
-//     $("#addcity").on("click", function(event){
-//         event.preventDefault();
-
-//         var inputCity = cityInput.val().trim();
-
-//         if(inputCity != ""){
-//             searchList[inputCity] = true;
-//             localStorage.setItem("searchList", JSON.stringify(searchList));
-//             displayWeather(inputCity, searchList);
-//             $("#listreponse").show();
-//             $("#weatherforecast").show();
-//         }
-//     })
-// })
-
 // Make the list clickable
 $("#listcity").on("click", "button", function(event){
     // To prevent refresh

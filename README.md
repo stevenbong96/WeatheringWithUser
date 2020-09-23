@@ -1,5 +1,5 @@
-Link to Github repo:
-Link to deployed Github:
+Link to Github repo: https://github.com/stevenbong96/WeatheringWithUser
+Link to deployed Github: https://stevenbong96.github.io/WeatheringWithUser/
 
 Week 4 HW #1 Weather and Forecast Dashboard
 
