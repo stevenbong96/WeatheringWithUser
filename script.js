@@ -17,7 +17,6 @@ function showListOfCity(createList){
         cityButton.text(createList[i]);
         $("#listcity").append(cityButton);
     }
-
 }
 
 // Create function to call the ajax function to run the API
@@ -100,12 +99,11 @@ function displayWeather(cities){
             var forecastDate = $("#date-" + j);
             var splitDate = responseForecast.list[j].dt_txt;
             var newSplit = splitDate.split(" ");
+            // Display the dates in the forecast
             for(z = 0; z < newSplit.length; z++){
-                console.log(newSplit[z]);
-                forecastDate.text(newSplit[z]);
+                forecastDate.text(newSplit[z - 1]);
             }
             
-
             // Create forecast icon
             var forecastIcon = $("#icon-" + j);
             forecastIcon.attr("src", "https://openweathermap.org/img/w/" + responseForecast.list[j].weather[0].icon + ".png");
@@ -154,6 +152,35 @@ $(document).on("click", "button", function(event){
     // Call the 
     // reloadDisplayCity();
 })
+
+// Copy of function above
+// $(document).ready(function(){
+//     var getCity = localStorage.getItem("createList");
+//     var searchList = JSON.parse(getCity);
+
+//     if(searchList == null){
+//         searchList = {};
+//     }
+
+//     showListOfCity(searchList);
+
+//     $("#listreponse").hide();
+//     $("#weatherforecast").hide();
+
+//     $("#addcity").on("click", function(event){
+//         event.preventDefault();
+
+//         var inputCity = cityInput.val().trim();
+
+//         if(inputCity != ""){
+//             searchList[inputCity] = true;
+//             localStorage.setItem("searchList", JSON.stringify(searchList));
+//             displayWeather(inputCity, searchList);
+//             $("#listreponse").show();
+//             $("#weatherforecast").show();
+//         }
+//     })
+// })
 
 // Make the list clickable
 $("#listcity").on("click", "button", function(event){

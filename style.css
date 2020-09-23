@@ -23,6 +23,10 @@ body{
     margin-top: 3%;
 }
 
+.listresponse{
+    width: 68%;
+}
+
 .cityW{
     display: flex;
     flex-direction: row;
