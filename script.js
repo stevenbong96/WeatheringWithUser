@@ -18,8 +18,6 @@ function showListOfCity(createList){
         $("#listcity").append(cityButton);
     }
 
-    // Get value local storage
-    
 }
 
 // Create function to call the ajax function to run the API
@@ -100,7 +98,13 @@ function displayWeather(cities){
 
             // Create forecast date
             var forecastDate = $("#date-" + j);
-            forecastDate.text(responseForecast.list[j].dt_txt);
+            var splitDate = responseForecast.list[j].dt_txt;
+            var newSplit = splitDate.split(" ");
+            for(z = 0; z < newSplit.length; z++){
+                console.log(newSplit[z]);
+                forecastDate.text(newSplit[z]);
+            }
+            
 
             // Create forecast icon
             var forecastIcon = $("#icon-" + j);
@@ -132,7 +136,7 @@ $(document).on("click", "button", function(event){
     var inputCity = cityInput.val().trim();
     console.log(inputCity);
 
-    // Adding movies to the list
+    // Adding cities to the list
     for(z = 0; z < cityName.length; z++){
         if(cityName[z] === inputCity){
             displayWeather(inputCity);
@@ -145,7 +149,7 @@ $(document).on("click", "button", function(event){
     showListOfCity(cityName);
 
     // Save to local storage
-    // saveToLocal(this.id,$(this).val());
+    saveToLocal(this.id,$(this).val());
 
     // Call the 
     // reloadDisplayCity();
