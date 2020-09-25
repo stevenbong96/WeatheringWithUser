@@ -5,6 +5,15 @@ let cityInput = $("#citytext");
 // Declare the API Key
 var APIKey = "9225ddf71ee9bfd143d39d7740347c51";
 
+var searchCity = JSON.parse(localStorage.getItem("Weather History"));
+console.log(searchCity);
+
+if(searchCity !== null){
+    displayWeather(searchCity[searchCity.length - 1]);
+    cityName = searchCity;
+    showListOfCity(cityName);
+}
+
 // Create list of city
 function showListOfCity(createList){
     var listCity = $("#listcity")
@@ -12,10 +21,12 @@ function showListOfCity(createList){
     
     // Create for loop
     for(i = 0; i < createList.length;i++){
-        var cityButton = $("<button>");
-        cityButton.addClass("list-group-item list-group-item-action btn-block");
-        cityButton.text(createList[i]);
-        $("#listcity").append(cityButton);
+        if(createList[i] !== ""){
+            var cityButton = $("<button>");
+            cityButton.addClass("list-group-item list-group-item-action btn-block");
+            cityButton.text(createList[i]);
+            $("#listcity").append(cityButton);
+        }
     }
 }
 
@@ -122,7 +133,7 @@ function displayWeather(cities){
 
 // local storage function
 function saveToLocal(key, value){
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
 // Create event listener for user to search their city
@@ -134,6 +145,10 @@ $(document).on("click", "button", function(event){
     var inputCity = cityInput.val().trim();
     console.log(inputCity);
 
+    if(cityInput.val() === ""){
+        inputCity = $(this).text();
+    }
+
     // Adding cities to the list
     for(z = 0; z < cityName.length; z++){
         if(cityName[z] === inputCity){
@@ -142,33 +157,16 @@ $(document).on("click", "button", function(event){
         } 
     }
 
-    cityName.push(inputCity);
+    if(cityInput !== ""){
+        cityName.push(inputCity);
+        console.log(cityInput);
+    }
+    
     displayWeather(inputCity);
+    cityInput.val("");
     showListOfCity(cityName);
 
     // Save to local storage
-    saveToLocal(this.id,$(this).val());
-
-    // Call the 
-    // reloadDisplayCity();
+    saveToLocal("Weather History", cityName);
 })
 
-// Make the list clickable
-$("#listcity").on("click", "button", function(event){
-    // To prevent refresh
-    event.preventDefault();
-
-    // List city
-    var getCity = $(this).text();
-
-    // Call the function
-    displayWeather(getCity);
-
-    // Determine which one to show
-    $("#listreponse").show();
-    $("#weatherforecast").show();
-})
-
-// Call the 
-// reloadDisplayCity();
-// displayWeather();
